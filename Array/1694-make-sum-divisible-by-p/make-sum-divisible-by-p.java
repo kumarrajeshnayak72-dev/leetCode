@@ -21,16 +21,20 @@ class Solution {
         for (int i = 0; i < nums.length; i++) {
             prefixSum += nums[i];
 
-            int currentRemainder = (int)(prefixSum % p);
+            int rem = (int)(prefixSum % p);
 
-            int needed = (currentRemainder - target + p) % p;
+            if (rem < 0) {
+                rem += p;
+            }
+
+            int needed = (rem - target + p) % p;
 
             if (map.containsKey(needed)) {
                 int length = i - map.get(needed);
                 minLength = Math.min(minLength, length);
             }
 
-            map.put(currentRemainder, i);
+            map.put(rem, i);
         }
 
         return minLength == nums.length ? -1 : minLength;
