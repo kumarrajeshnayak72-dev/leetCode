@@ -12,20 +12,16 @@ class Solution {
             return 0;
         }
 
-        HashMap<Integer, Integer> map = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
         map.put(0, -1);
 
-        long prefixSum = 0;
+        long prefix = 0;
         int minLength = nums.length;
 
         for (int i = 0; i < nums.length; i++) {
-            prefixSum += nums[i];
+            prefix += nums[i];
 
-            int rem = (int)(prefixSum % p);
-
-            if (rem < 0) {
-                rem += p;
-            }
+            int rem = (int)(prefix % p);
 
             int needed = (rem - target + p) % p;
 
