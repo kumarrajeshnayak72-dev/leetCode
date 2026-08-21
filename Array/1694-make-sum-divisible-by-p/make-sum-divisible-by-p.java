@@ -36,3 +36,5 @@ class Solution {
         return minLength == nums.length ? -1 : minLength;
     }
 }
+
+
