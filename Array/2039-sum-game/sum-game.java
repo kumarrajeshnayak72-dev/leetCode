@@ -23,7 +23,6 @@ class Solution {
             }
         }
 
-        // Odd number of '?' -> Alice wins
         if ((leftQ + rightQ) % 2 == 1) {
             return true;
         }
