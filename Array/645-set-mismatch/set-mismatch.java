@@ -5,21 +5,20 @@ class Solution {
         int duplicate = -1;
         int missing = -1;
 
-        for (int num : nums) {
-            if (set.contains(num)) {
+        for(int num:nums){
+            if(set.contains(num)){
                 duplicate = num;
-            } else {
+            }else{
                 set.add(num);
             }
         }
 
-        for (int i = 1; i <= nums.length; i++) {
-            if (!set.contains(i)) {
+        for(int i = 1; i <= nums.length; i++){
+            if(!set.contains(i)){
                 missing = i;
                 break;
             }
         }
-
-        return new int[]{duplicate, missing};
+        return new int [] {duplicate,missing};
     }
 }
