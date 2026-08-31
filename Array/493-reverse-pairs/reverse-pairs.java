@@ -1,13 +1,11 @@
 class Solution {
-
     void merge(int[] nums, int low, int mid, int high) {
         int left = low;
         int right = mid + 1;
-
         List<Integer> temp = new ArrayList<>();
 
         while (left <= mid && right <= high) {
-            if (nums[left] <= nums[right]) {
+            if (nums[left] < nums[right]) {
                 temp.add(nums[left]);
                 left++;
             } else {
@@ -37,7 +35,8 @@ class Solution {
 
         for (int i = low; i <= mid; i++) {
 
-            while (right <= high && (long) nums[i] > 2L * nums[right]) {
+            while (right <= high &&
+                    (long) nums[i] > 2L * nums[right]) {
                 right++;
             }
 
@@ -48,17 +47,14 @@ class Solution {
     }
 
     int mergeSort(int[] nums, int low, int high) {
-        if (low >= high) return 0;
-
-        int mid = low + (high - low) / 2;
-
         int cnt = 0;
+        if (low >= high)
+            return 0;
 
+        int mid = (low + high) / 2;
         cnt += mergeSort(nums, low, mid);
         cnt += mergeSort(nums, mid + 1, high);
-
         cnt += count(nums, low, mid, high);
-
         merge(nums, low, mid, high);
 
         return cnt;
