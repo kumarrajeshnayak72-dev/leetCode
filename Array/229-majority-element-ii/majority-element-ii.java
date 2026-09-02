@@ -1,6 +1,7 @@
 class Solution {
     public List<Integer> majorityElement(int[] nums) {
         List<Integer> ans = new ArrayList<>();
+
         int cnt1 = 0;
         int cnt2 = 0;
         int elem1 = Integer.MIN_VALUE;
@@ -23,6 +24,7 @@ class Solution {
             }
         }
         cnt1 = 0; cnt2 = 0;
+
         for(int i = 0; i < nums.length; i++){
             if(elem1 == nums[i]) cnt1++;
             if(elem2 == nums[i]) cnt2++;
