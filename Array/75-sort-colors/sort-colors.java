@@ -1,29 +1,30 @@
 class Solution {
     public void sortColors(int[] nums) {
-       int red = 0, white = 1, blue = 2;
-       int zero = 0, one = 0, two = 0;
+       int red = 0, white = 0, blue = 0;
 
-       for(int i = 0; i < nums.length; i++){
-            if(nums[i] == 0){
-                zero++;
-            }else if(nums[i] == 1){
-                one++;
+       for(int n : nums){
+            if(n == 0){
+                red++;
+            }else if(n == 1){
+                white++;
             }else{
-                two++;
+                blue++;
             }
        }
 
-       for(int i = 0; i < nums.length; i++){
-            if(zero > 0){
+       int i = 0;
+       while(i < nums.length){
+            if(red > 0){
                 nums[i] = 0;
-                zero--;
-            }else if(one > 0){
+                red--;
+            }else if(white > 0){
                 nums[i] = 1;
-                one--;
+                white--;
             }else{
                 nums[i] = 2;
-                two--;
+                blue--;
             }
+            i++;
        }
     }
 }
