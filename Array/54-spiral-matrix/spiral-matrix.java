@@ -1,35 +1,43 @@
 class Solution {
     public List<Integer> spiralOrder(int[][] matrix) {
-      ArrayList<Integer>list= new ArrayList<>();
-      int m = matrix.length;
-      int n = matrix[0].length;
-      int rowBegin = 0;
-      int rowEnd = m-1;
-      int colBegin = 0;
-      int colEnd = n-1;
+        int top = 0;
+        int left = 0;
+        int right = matrix[0].length - 1;
+        int bottom = matrix.length - 1;
 
-      while (rowBegin <= rowEnd && colBegin <= colEnd){
-          for (int i = colBegin; i <= colEnd; i++) {
-              list.add(matrix[rowBegin][i]);
-          }
-          rowBegin++;
-          for (int i = rowBegin; i <= rowEnd; i++) {
-              list.add(matrix[i][colEnd]);
-          }
-          colEnd--;
-          if (rowBegin <= rowEnd){
-              for (int i = colEnd; i >= colBegin; i--) {
-                  list.add(matrix[rowEnd][i]);
-              }
-          }
-          rowEnd--;
-          if (colBegin <= colEnd){
-              for (int i = rowEnd; i >= rowBegin; i--) {
-                  list.add(matrix[i][colBegin]);
-              }
-          }
-          colBegin++;
-      }
-       return list;
+        List<Integer> ans = new ArrayList<>();
+
+        while (top <= bottom && left <= right) {
+
+            // Move right
+            for (int i = left; i <= right; i++) {
+                ans.add(matrix[top][i]);
+            }
+            top++;
+
+            // Move down
+            for (int i = top; i <= bottom; i++) {
+                ans.add(matrix[i][right]);
+            }
+            right--;
+
+            // Move left
+            if (top <= bottom) {
+                for (int i = right; i >= left; i--) {
+                    ans.add(matrix[bottom][i]);
+                }
+                bottom--;
+            }
+
+            // Move up
+            if (left <= right) {
+                for (int i = bottom; i >= top; i--) {
+                    ans.add(matrix[i][left]);
+                }
+                left++;
+            }
+        }
+
+        return ans;
     }
 }
