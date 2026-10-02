@@ -4,7 +4,6 @@ class Solution {
         HashSet<Integer> rows = new HashSet<>();
         HashSet<Integer> cols = new HashSet<>();
 
-        // Find all rows and columns containing zero
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
                 if (matrix[i][j] == 0) {
@@ -14,7 +13,6 @@ class Solution {
             }
         }
 
-        // Set corresponding cells to zero
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
                 if (rows.contains(i) || cols.contains(j)) {
